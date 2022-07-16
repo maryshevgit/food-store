@@ -1,0 +1,19 @@
+.admin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    button{
+        padding: 15px 30px;
+    }
+    input{
+        width: 300px;
+        text-align: center;
+        padding: 20px;
+        font-size: 18px;
+        background-color: #dce0f8;
+    }
+}
