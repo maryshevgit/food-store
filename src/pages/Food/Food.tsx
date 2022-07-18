@@ -1,34 +1,27 @@
-import axios from 'axios';
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
+import { useNavigate } from 'react-router-dom';
+import FoodItem from '../../components/FoodItem';
 import Loader from '../../components/Loader/Loader';
-import { useAppSelector } from '../../hooks/reduxHook';
-import { IFood } from '../../types/types';
-import Button from '../../ui/button/Button';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
+import {  useGetFoodQuery } from '../../redux/services/foodApi';
+import { setId } from '../../redux/slices/typeSlice';
 import styles from './Food.module.scss'
 
 const Food:FC = () => {
-  const [food, setFood] = useState<IFood[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const dispatch = useAppDispatch()
+
+  const navigate = useNavigate()
 
   const foodType = useAppSelector(state => state.types.type)
   const foodTypeName = useAppSelector(state => state.types.typeName)
 
-  useEffect(() => {
-    async function fetchFood() {
-      setIsLoading(true)
-      try {
-        const { data } = await axios.get<IFood[]>(`https://62cb35b41eaf3786ebb6d4e1.mockapi.io/api/items?type=${foodType}`);
-        setFood(data);
-      } catch (error) {
-        alert('Ошибка при получении еды!');
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    fetchFood();
-  }, [foodType]);
+  const {data, isLoading} = useGetFoodQuery(foodType)
 
-  
+  const getOneFood = (id:number) => {
+    dispatch(setId(id))
+    navigate(`${id}`)
+  }
+
   return (
     <div>
       {isLoading ? <Loader /> : ''}
@@ -36,24 +29,8 @@ const Food:FC = () => {
         {foodTypeName}
       </div>
       <div className={styles.food_body}>
-        {food.map(item => 
-          <div key={item.id} className={styles.food}>
-            <div className={styles.food_background_main}>
-              <img src={item.img} alt="" />
-              <div className={styles.food_background}>
-                <div className={styles.food__title}>
-                  {item.name}
-                </div>
-                <div className={styles.food__priceAt}>
-                  Цена от
-                </div>
-                <div className={styles.food__price}>
-                  {item.price}p.
-                </div>
-              </div>
-            </div>
-            <Button children = "Добавить" />
-          </div>
+        {data && data.map(item =>
+          <FoodItem key={item.id} data={item} getOneFood={getOneFood} />
         )}
       </div>
     </div>

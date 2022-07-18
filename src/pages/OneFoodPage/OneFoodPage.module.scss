@@ -1,0 +1,49 @@
+.one_food{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    svg{
+        color: gold;
+        height: 50px;
+        width: 50px;
+    }
+    button{
+        padding: 20px 40px;
+    }
+    .title{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 40px;
+        font-weight: bold;
+        width: 100%;
+        .favorite{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 30px;
+            transition: all 0.3s ease;
+            &:hover{
+                svg{
+                    fill:yellow
+                }
+            }
+        }
+    }
+    .img{
+        display: flex;
+        align-items: center;
+        gap: 50px;
+    }
+    .rating{
+        font-size: 40px;
+        display: flex;
+        align-items: center;
+    }
+    .price{
+        font-size: 40px;
+    }
+}

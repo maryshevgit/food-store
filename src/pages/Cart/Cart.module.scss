@@ -1,0 +1,119 @@
+.cart{
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: 100%;
+    .cart_header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .cart_title{
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            svg{
+                height: 30px;
+                width: 30px;
+            }
+        }
+        .cart_trash{
+            display: flex;
+            align-items: center;
+            color: rgb(188, 188, 188);
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover{
+                color: black;
+            }
+        }
+    }
+
+    .cart_empty{
+        font-size: 40px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        flex: 1 1 auto;
+        margin-top: 20px;
+        .cart_empty_text{
+            font-size: 20px;
+            padding-top: 20px;
+            font-style: italic;
+        }
+    }
+
+    .cart_item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .item_add{
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-weight: bold;
+            
+        }
+        .item_title {
+          font-size: 24px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: 500px;
+          img{
+            height: 200px;
+            width: 200px;
+          }
+        }
+        button{
+            background-color: transparent;
+            color: #fb6162;
+            border: 1px solid #fb6162;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            &:hover{
+                color: #ff0000;
+                border: 1px solid #ff0000;
+            }
+        }
+        .item_price{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .btn_trash{
+            color: lightgray;
+            border: 1px solid lightgray;
+            &:hover{
+                color: black;
+                border: 1px solid black;
+            }
+        }
+    }
+
+    .cart_bottom{
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+        .cart_goods{
+            span{
+                font-weight: bold;
+            }
+        }
+        .cart_value{
+            span{
+                color: #fb6162;
+            }
+        }
+    }
+
+    .cart_pay {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      button{
+        padding: 15px 40px;
+      }
+    }
+}

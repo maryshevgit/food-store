@@ -9,7 +9,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useNavigate } from 'react-router-dom';
 
 const Header:FC = () => {
-    const isAuth:boolean = false
+    const isAuth:boolean = true
 
     const navigate = useNavigate()
 
@@ -22,11 +22,8 @@ const Header:FC = () => {
             <div className={styles.navbar__item} onClick={() => navigate('')}>
                 <HomeIcon />
             </div>
-            <div className={styles.navbar__item} onClick={() => navigate('/orders')}>
+            <div className={styles.navbar__item} onClick={() => navigate('cart/orders')}>
                 <ListAltIcon />
-            </div>
-            <div className={styles.navbar__item} onClick={() => navigate('/favorites')}>
-                <StarOutlineIcon />
             </div>
             {isAuth &&
                 <div className={styles.navbar__item} onClick={() => navigate('/admin')}>

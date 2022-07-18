@@ -1,16 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { foodApi } from './services/foodApi'
 import typeReducer from './slices/typeSlice'
-import userReducer from './slices/userSlice'
-import foodReducer from './slices/foodSlice'
+import cartReducer from './slices/cartSlice'
 
 const rootReducer = combineReducers({
     types: typeReducer,
-    user: userReducer,
-    food: foodReducer,
+    cart: cartReducer,
+    [foodApi.reducerPath]: foodApi.reducer,
 })
 
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(foodApi.middleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>

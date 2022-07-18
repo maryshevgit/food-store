@@ -1,5 +1,8 @@
 import axios from 'axios'
 import React, { ChangeEvent, FC, useState } from 'react'
+import Loader from '../../components/Loader/Loader'
+import { useCreateFoodMutation } from '../../redux/services/foodApi'
+import { IFood } from '../../types/types'
 import Select from '../../ui/select/Select'
 import styles from './Admin.module.scss'
 
@@ -13,48 +16,43 @@ const Admin:FC = () => {
   const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setValueTitle(e.target.value)
   }
-
   const changePrice = (e: ChangeEvent<HTMLInputElement>) => {
     setValuePrice(+e.target.value)
   }
-
   const changeRating = (e: ChangeEvent<HTMLInputElement>) => {
     const rating = +e.target.value
     if(rating >= 0 && rating <= 10){
       setValueRating(+e.target.value)
     }
   }
-
   const changeImg = (e: ChangeEvent<HTMLInputElement>) => {
     setValueImg(e.target.value)
   }
-
   const changeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     setValueSelect(+e.target.value)
-}
+  }
+
+
+  const [createFood, {isLoading}] = useCreateFoodMutation() 
 
   const addItem = async() => {
-    try {
-      return await axios.post('https://62cb35b41eaf3786ebb6d4e1.mockapi.io/api/items', {
-        name: valueTitle,
-        price: valuePrice,
-        img: valueImg,
-        rating: valueRating,
-        type: valueSelect,
-    })
-    } catch (error) {
-      alert('Ошибка при добавлении новой еды!');
-    } finally {
-      setValueImg('')
-      setValuePrice('')
-      setValueTitle('')
-      setValueRating('')
-      setValueSelect(0)
-    }
+    await createFood({
+      name: valueTitle,
+      price: valuePrice,
+      img: valueImg,
+      rating: valueRating,
+      type: valueSelect,
+    } as IFood)
+    setValueImg('')
+    setValuePrice('')
+    setValueTitle('')
+    setValueRating('')
+    setValueSelect(0)
   }
 
   return (
     <div className={styles.admin}>
+      {isLoading && <Loader />}
         <div>Добавьте новую еду</div>
         <input 
           value={valueTitle} 

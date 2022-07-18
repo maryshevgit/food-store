@@ -2,12 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type Type = {
     type: number,
-    typeName: string
+    typeName: string,
+    id: number
 }
 
 const initialState: Type = {
     type: 0,
-    typeName: ''
+    typeName: '',
+    id: 0
 }
 
 const typeSlice = createSlice({
@@ -19,10 +21,13 @@ const typeSlice = createSlice({
         },
         setTypeName(state, action: PayloadAction<string>) {
             state.typeName = action.payload
+        },
+        setId(state, action: PayloadAction<number>) {
+            state.id = action.payload
         }
     },
 })
 
-export const {setType, setTypeName} = typeSlice.actions;
+export const {setType, setTypeName, setId} = typeSlice.actions;
 
 export default typeSlice.reducer

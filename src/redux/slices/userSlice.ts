@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AuthState, IUser } from "../../types/types";
+import { IUser } from "../../types/types";
 
-const initialState: AuthState = {
+const initialState = {
     user: null,
     loading: false,
     error: '',
@@ -13,7 +13,6 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser(state, action: PayloadAction<IUser>) {
-            state.user = action.payload;
             state.authenticated = false;
         },
         setLoading(state, action: PayloadAction<boolean>) {

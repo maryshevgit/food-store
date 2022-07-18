@@ -11,6 +11,7 @@ export interface IFood {
     type: number,
     rating: number,
     price: number,
+    count: number,
 }
 
 export interface IUser {
@@ -19,28 +20,6 @@ export interface IUser {
     id: string;
 }
 
-export interface AuthState {
-    user: IUser | null;
-    authenticated: boolean;
-    loading: boolean;
-    error: string;
-}
-
-export interface SignUpData {
-    email: string;
-    password: string;
-    firstName: string;
-}
-
-export interface SignInData {
-    email: string;
-    password: string;
-}
-
-
-//setUser payload user 
-//setloading payload boolean
-//seterror payload string
 
 
 
