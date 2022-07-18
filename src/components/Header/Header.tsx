@@ -3,20 +3,24 @@ import styles from './Header.module.scss'
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import HomeIcon from '@mui/icons-material/Home';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import logo from '../../assets/logo.svg'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { useAppDispatch } from '../../hooks/reduxHook';
+import { removeUser } from '../../redux/slices/userSlice';
 
 const Header:FC = () => {
-    const isAuth:boolean = true
+    const {isAuth} = useAuth()
 
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
   return (
     <div className={styles.header}>
         <div className={styles.name}>
-            N
+            <img src={logo} alt="" />
         </div>
         <div className={styles.navbar}>
             <div className={styles.navbar__item} onClick={() => navigate('')}>
@@ -32,7 +36,7 @@ const Header:FC = () => {
             }
         </div>
         {isAuth ? 
-            <div className={styles.auth}>
+            <div className={styles.auth} onClick={() => dispatch(removeUser())}>
                 <LogoutIcon />
             </div>
         :
