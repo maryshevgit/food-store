@@ -11,9 +11,11 @@
         align-items: center;
         justify-content: space-between;
         width: 10%;
+        min-width: 90px;
         position: relative;
         cursor: pointer;
         transition: all 0.3s ease;
+        
         &:hover{
           background-color: #fb6162;
         }
@@ -27,8 +29,15 @@
         }
       }
     }
+    @media (max-width:1100px) {
+      .home_header{
+        flex-direction: column;
+      }
+    }
+
     .food__types {
       display: flex;
+      
       .type{
         width: 100px;
         height: 150px;
@@ -53,6 +62,27 @@
         }
       }
     }
+    @media (max-width:1100px) {
+      .food__types{
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        .type{
+          width: 70px;
+          height: 100px;
+        }
+      }
+    }
+    @media (max-width:642px) {
+      .food__types{
+        justify-content: center;
+        margin-bottom: 10px;
+        .type{
+          width: 50px;
+          height: 100px;
+        }
+      }
+    }
+    
 
     .popular__foods{
       margin-top: 50px;
@@ -66,6 +96,17 @@
           font-size: 30px;
           font-weight: bold;
         }
+        @media (max-width:768px) {
+          .header__title{
+            font-size: 24px;
+          }
+        }
+        @media (max-width:400px) {
+          .header__title{
+            font-size: 20px;
+          }
+        }
+
 
         .header__view_more{
           display: flex;
@@ -84,12 +125,40 @@
             }
           }
         }
+        @media (max-width:768px) {
+          .header__view_more{
+            font-size: 14px;
+            img{
+              margin-left: 10px;
+            }
+          }
+        }
+        @media (max-width:400px) {
+          .header__view_more{
+            font-size: 12px;
+            img{
+              margin-left: 0px;
+              width: 20px;
+            }
+          }
+        }
       }
 
       .popular__food_body{
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
+      }
+      @media (max-width:768px) {
+        .popular__food_body{
+          justify-content: space-between;
+        }
+      }
+      @media (max-width:591px) {
+        .popular__food_body{
+          align-items: center;
+          justify-content: center;
+        }
       }
 
       .popular__food{

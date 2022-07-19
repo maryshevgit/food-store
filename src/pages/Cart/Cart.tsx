@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
 import { addItem, addOrder, clearItems, minusItem, removeItem } from '../../redux/slices/cartSlice';
 import { IFood } from '../../types/types';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 
 const Cart = () => {
   const data = useAppSelector(state => state.cart.cart)
@@ -15,9 +16,6 @@ const Cart = () => {
 
   const onClickMinus = (id:number, count:number) => {
     dispatch(minusItem(id))
-    if(count <= 1){
-      dispatch(removeItem(id))
-    }
   }
 
   const onClickPlus = (id: number) => {
@@ -42,12 +40,16 @@ const Cart = () => {
   return (
     <div className={styles.cart}>
       <div className={styles.cart_header}>
-        
         <div className={styles.cart_title}>
           <ShoppingCartIcon />
           Корзина
         </div>
-        <div className={styles.cart_trash} onClick={() => dispatch(clearItems())}>
+        <div 
+          className={classNames(
+            styles.cart_trash,
+            {[styles.disabled]: totalPrice === 0}
+          )} 
+          onClick={() => dispatch(clearItems())}>
           <DeleteIcon />
           Очистить корзину
         </div>
@@ -59,44 +61,53 @@ const Cart = () => {
         </div>
       }
       {data && data.map(item =>
-      <div>
-        <div className={styles.cart_item}>
-          <div className={styles.item_title}>
-            <img src={item.img} alt={item.name} />
-            {item.name}
-          </div>
-          <div className={styles.item_add}>
-            <button onClick={() => onClickMinus(item.id, item.count)}>
-              -
+        <div key={item.id}>
+          <div className={styles.cart_item}>
+            <div className={styles.item_title}>
+              <img src={item.img} alt={item.name} />
+              {item.name}
+            </div>
+            <div className={styles.item_add}>
+              <button
+                onClick={() => onClickMinus(item.id, item.count)}
+                disabled={item.count === 1}
+                className={classNames({[styles.disabled] : item.count === 1})}
+              >
+                -
+              </button>
+              {item.count}
+              <button onClick={() => onClickPlus(item.id)}>
+                +
+              </button>
+            </div>
+            <div className={styles.item_price}>
+              {item.price}
+            </div>
+            <button className={styles.btn_trash} onClick={() => onClickDelete(item.id)}>
+              x
             </button>
-            {item.count}
-            <button onClick={() => onClickPlus(item.id)}>
-              +
-            </button>
           </div>
-          <div className={styles.item_price}>
-            {item.price}
-          </div>
-          <button className={styles.btn_trash} onClick={() => onClickDelete(item.id)}>
-            x
-          </button>
         </div>
-        
-      </div>
       )}
       <div className={styles.cart_bottom}>
-          <div className={styles.cart_goods}>
-            Всего товаров: <span>{totalCount}</span> 
-          </div>
-          <div className={styles.cart_value}>
-            Сумма заказа: <span>{totalPrice}</span>
-          </div>
+        <div className={styles.cart_goods}>
+          Всего товаров: <span>{totalCount}</span> 
         </div>
-        <div className={styles.cart_pay}>
-          <button onClick={payNow}>
-            Оплатить заказ
-          </button>
+        <div className={styles.cart_value}>
+          Сумма заказа: <span>{totalPrice}</span>
         </div>
+      </div>
+      <div className={classNames(
+        styles.cart_pay,
+        {[styles.disabled]: totalPrice === 0}
+      )}>
+        <button 
+          onClick={payNow}
+          disabled={totalPrice === 0}
+        >
+          Оплатить заказ
+        </button>
+      </div>
     </div>
   )
 }

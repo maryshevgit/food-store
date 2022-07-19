@@ -11,7 +11,7 @@ const Orders = () => {
     <div className={styles.order}>
       {totalPrice ? <h2>Ваш заказ принят!</h2> : <h2>У вас нет заказов</h2>}
       {orders && orders.map(order =>
-        <div className={styles.order_item}>
+        <div key={order.id} className={styles.order_item}>
           <div className={styles.order_name}>
             <img src={order.img} alt={order.name} />
             {order.name} ({order.count}шт.)
