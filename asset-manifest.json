@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/food-store/static/css/main.66ed4e20.css",
-    "main.js": "/food-store/static/js/main.8e51129f.js",
+    "main.js": "/food-store/static/js/main.0d79bc87.js",
     "Cart.css": "/food-store/static/css/Cart.54ebfd9c.chunk.css",
     "Cart.js": "/food-store/static/js/Cart.de8d2e8f.chunk.js",
     "Admin.css": "/food-store/static/css/Admin.a5afb2bf.chunk.css",
@@ -18,7 +18,7 @@
     "index.html": "/food-store/index.html",
     "static/media/close.svg": "/food-store/static/media/close.a906c958364b1a5685f5488f1522dd77.svg",
     "main.66ed4e20.css.map": "/food-store/static/css/main.66ed4e20.css.map",
-    "main.8e51129f.js.map": "/food-store/static/js/main.8e51129f.js.map",
+    "main.0d79bc87.js.map": "/food-store/static/js/main.0d79bc87.js.map",
     "Cart.54ebfd9c.chunk.css.map": "/food-store/static/css/Cart.54ebfd9c.chunk.css.map",
     "Cart.de8d2e8f.chunk.js.map": "/food-store/static/js/Cart.de8d2e8f.chunk.js.map",
     "Admin.a5afb2bf.chunk.css.map": "/food-store/static/css/Admin.a5afb2bf.chunk.css.map",
@@ -34,6 +34,6 @@
   },
   "entrypoints": [
     "static/css/main.66ed4e20.css",
-    "static/js/main.8e51129f.js"
+    "static/js/main.0d79bc87.js"
   ]
 }
