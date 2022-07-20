@@ -19,19 +19,6 @@
         font-size: 40px;
         font-weight: bold;
         width: 100%;
-        .favorite{
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 400;
-            font-size: 30px;
-            transition: all 0.3s ease;
-            &:hover{
-                svg{
-                    fill:yellow
-                }
-            }
-        }
     }
     .img{
         display: flex;
@@ -45,5 +32,57 @@
     }
     .price{
         font-size: 40px;
+    }
+}
+
+@media (max-width:1290px) {
+    .one_food{
+      .img{
+        img{
+            width: 400px;
+            height: 400px;
+        }
+      }  
+    }
+}
+@media (max-width:953px) {
+    .one_food{
+        gap: 20px;
+        .img{
+            gap: 25px;
+            img{
+                width: 250px;
+                height: 250px;
+            }
+        }
+        .title{
+            font-size: 30px;
+        }
+        .rating{
+            font-size: 20px;
+        }
+        .price{
+            font-size: 20px;
+        }
+        button{
+            padding: 10px 20px;
+        }
+    }
+}
+
+@media (max-width:640px){
+    .one_food{
+        .img{
+            display: flex;
+            flex-direction: column;
+            img{
+                width: 200px;
+                height: 200px;
+            }
+        }
+        .title{
+            gap: 20px;
+            flex-direction: column;
+        }
     }
 }
