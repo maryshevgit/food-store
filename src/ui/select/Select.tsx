@@ -1,6 +1,5 @@
-import axios from 'axios';
-import React, { ChangeEvent, FC, useEffect, useState } from 'react'
-import { ITypes } from '../../types/types';
+import React, { ChangeEvent, FC } from 'react'
+import { useGetTypesQuery } from '../../redux/services/foodApi';
 import styles from './Select.module.scss'
 
 interface selectProps {
@@ -9,22 +8,8 @@ interface selectProps {
 }
 
 const Select:FC<selectProps> = ({value, selectChange}: selectProps) => {
-    const [types, setTypes] = useState<ITypes[]>([])
 
-    useEffect(() => {
-        async function fetchTypes() {
-          try {
-            const { data } = await axios.get<ITypes[]>('https://62cb35b41eaf3786ebb6d4e1.mockapi.io/api/types');
-            setTypes(data);
-          } catch (error) {
-            alert('Ошибка при получении типа еды!');
-          }
-        }
-        fetchTypes();
-      }, []);
-
-    
-    
+    const {data} = useGetTypesQuery(0)
 
   return (
     <select
@@ -32,7 +17,7 @@ const Select:FC<selectProps> = ({value, selectChange}: selectProps) => {
         onChange={selectChange}
         className={styles.select}
     >
-        {types.map(type =>
+        {data && data.map(type =>
             <option 
                 key={type.id}
                 value={type.id}
