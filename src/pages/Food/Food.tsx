@@ -1,10 +1,14 @@
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom';
+
 import FoodItem from '../../components/FoodItem';
 import Loader from '../../components/Loader/Loader';
+
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
 import {  useGetFoodQuery } from '../../redux/services/foodApi';
+
 import { setId } from '../../redux/slices/typeSlice';
+
 import styles from './Food.module.scss'
 
 const Food:FC = () => {

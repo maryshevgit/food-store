@@ -1,10 +1,15 @@
 import React, { FC } from 'react'
-import PopularFood from '../../components/PopularFood'
-import Types from '../../components/Types'
-import styles from './Home.module.scss'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
+
 import { useAppSelector } from '../../hooks/reduxHook';
+
+import Types from '../../components/Types'
+
+import PopularFood from '../../components/PopularFood'
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+import styles from './Home.module.scss'
 
 const Home:FC = () => {
   const navigate = useNavigate()

@@ -17,6 +17,11 @@ const Header:FC = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
+    const logOut = () => {
+        dispatch(removeUser())
+        navigate('/food-store/login')
+    }
+
   return (
     <div className={styles.header}>
         <div className={styles.name}>
@@ -30,17 +35,17 @@ const Header:FC = () => {
                 <ListAltIcon />
             </div>
             {isAuth &&
-                <div className={styles.navbar__item} onClick={() => navigate('/admin')}>
+                <div className={styles.navbar__item} onClick={() => navigate('/food-store/admin')}>
                     <AdminPanelSettingsIcon />
                 </div>
             }
         </div>
         {isAuth ? 
-            <div className={styles.auth} onClick={() => dispatch(removeUser())}>
+            <div className={styles.auth} onClick={logOut}>
                 <LogoutIcon />
             </div>
         :
-            <div className={styles.auth} onClick={() => navigate('/login')}>
+            <div className={styles.auth} onClick={() => navigate('registration')}>
                 <LoginIcon />
             </div>
         }

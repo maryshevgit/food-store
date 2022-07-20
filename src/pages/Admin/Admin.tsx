@@ -1,8 +1,12 @@
 import React, { ChangeEvent, FC, useState } from 'react'
+
 import Loader from '../../components/Loader/Loader'
-import { useCreateFoodMutation } from '../../redux/services/foodApi'
-import { IFood } from '../../types/types'
 import Select from '../../ui/select/Select'
+
+import { useCreateFoodMutation } from '../../redux/services/foodApi'
+
+import { IFood } from '../../types/types'
+
 import styles from './Admin.module.scss'
 
 const Admin:FC = () => {

@@ -14,7 +14,7 @@ const Types:FC = () => {
   const changeType = (id: number, type:string) => {
     dispatch(setType(id))
     dispatch(setTypeName(type))
-    navigate('/food')
+    navigate('/food-store/food')
   }
 
   const {data, isLoading} = useGetTypesQuery(0)

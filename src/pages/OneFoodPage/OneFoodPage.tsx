@@ -1,11 +1,16 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook'
+
 import { useGetPopularFoodQuery } from '../../redux/services/foodApi'
-import styles from './OneFoodPage.module.scss'
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import Button from '../../ui/button/Button';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook'
 import { addItem } from '../../redux/slices/cartSlice';
+
 import { IFood } from '../../types/types';
+
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+
+import Button from '../../ui/button/Button';
+
+import styles from './OneFoodPage.module.scss'
 
 const OneFoodPage = () => {
   const foodId = useAppSelector(state => state.types.id)

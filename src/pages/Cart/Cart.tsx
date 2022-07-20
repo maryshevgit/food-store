@@ -1,12 +1,16 @@
 import React from 'react'
-import styles from './Cart.module.scss'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import DeleteIcon from '@mui/icons-material/Delete';
+import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
+
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHook';
 import { addItem, addOrder, clearItems, minusItem, removeItem } from '../../redux/slices/cartSlice';
+
 import { IFood } from '../../types/types';
-import { useNavigate } from 'react-router-dom';
-import classNames from 'classnames';
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import styles from './Cart.module.scss'
 
 const Cart = () => {
   const data = useAppSelector(state => state.cart.cart)

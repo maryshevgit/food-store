@@ -1,10 +1,15 @@
-import { createUserWithEmailAndPassword, OAuthCredential, signInWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase'
+
 import { useAppDispatch } from '../../hooks/reduxHook'
+
 import { setUser } from '../../redux/slices/userSlice'
+
 import Button from '../../ui/button/Button'
+
 import styles from './Auth.module.scss'
 
 const Auth = () => {
@@ -16,7 +21,7 @@ const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const isLogin = location.pathname === '/login'
+  const isLogin = location.pathname === '/food-store/login'
 
   const handleLogin = (email:string, password:any) => {
     signInWithEmailAndPassword (auth, email, password)
@@ -27,7 +32,7 @@ const Auth = () => {
         }))
       })
       .catch (error => console.log(error)) 
-      .finally(() => navigate('/'))
+      .finally(() => navigate('/food-store'))
   }
 
   const handleRegistration = async(email:string, password:any) => {
@@ -39,7 +44,7 @@ const Auth = () => {
         }))
       })
       .catch (error => console.log(error)) 
-      .finally(() => navigate('/'))
+      .finally(() => navigate('/food-store'))
   }
 
 
@@ -54,7 +59,6 @@ const Auth = () => {
           Регистрация
         </div>
       }
-      {!isLogin && <input type='text' placeholder='Введите имя' />}
       <input type='email' onChange={(e) => setEmail(e.target.value)} placeholder='Введите email' />
       <input type='password' onChange={(e) => setPassword(e.target.value)} placeholder='Введите пароль' />
       {isLogin ?
@@ -65,11 +69,11 @@ const Auth = () => {
       <div>
         {isLogin ? 
           <div>
-            Нет аккаунта? <span onClick={() => navigate('/registration')}>Зарегестрируйся</span>
+            Нет аккаунта? <span onClick={() => navigate('/food-store/registration')}>Зарегестрируйся</span>
           </div>
         : 
           <div>
-            Есть аккаунт? <span onClick={() => navigate('/login')}>Войти</span>
+            Есть аккаунт? <span onClick={() => navigate('/food-store/login')}>Войти</span>
           </div> 
         }
       </div>

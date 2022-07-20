@@ -16,15 +16,15 @@ function App() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path='/' element={<MainLayout />}>
+        <Route path='/food-store' element={<MainLayout />}>
           <Route path='' element={<Home />} />
-          <Route path='/cart/orders' element={<Orders />} />
-          <Route path='/login' element={<Auth />} />
-          <Route path='/registration' element={<Auth />} />
-          <Route path='/admin' element={<Admin />} />
-          <Route path='/food' element={<Food />} />
-          <Route path='/food/:id' element={<OneFoodPage />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='cart/orders' element={<Orders />} />
+          <Route path='login' element={<Auth />} />
+          <Route path='registration' element={<Auth />} />
+          <Route path='admin' element={<Admin />} />
+          <Route path='food' element={<Food />} />
+          <Route path='food/:id' element={<OneFoodPage />} />
+          <Route path='cart' element={<Cart />} />
         </Route>
       </Routes>
     </Suspense>

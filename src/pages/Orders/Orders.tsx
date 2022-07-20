@@ -1,6 +1,9 @@
 import React from 'react'
+
 import { useAppSelector } from '../../hooks/reduxHook'
+
 import { calcTotalPrice } from '../../utils/calcTotalPrice'
+
 import styles from './Order.module.scss'
 
 const Orders = () => {
