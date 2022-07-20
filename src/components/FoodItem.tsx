@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../hooks/reduxHook'
 import styles from '../pages/Food/Food.module.scss'
 import { addItem } from '../redux/slices/cartSlice'

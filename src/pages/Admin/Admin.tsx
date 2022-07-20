@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { ChangeEvent, FC, useState } from 'react'
 import Loader from '../../components/Loader/Loader'
 import { useCreateFoodMutation } from '../../redux/services/foodApi'
